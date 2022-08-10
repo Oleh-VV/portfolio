@@ -1,0 +1,71 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  font-size: 16px;
+}
+
+body {
+  overflow: hidden;
+  height: 100vh;
+  width: 100%;
+  background-image: url("bg.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+}
+.main-container {
+  height: 100%;
+  width: 100%;
+}
+
+.hidden-block {
+  opacity: 1;
+  background-color: white;
+  width: 100%;
+  position: relative;
+  transform: translate(0%);
+}
+.visual-block {
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.hidden-block:nth-of-type(odd) .visual-block {
+  transform: translate(-100%);
+}
+.hidden-block:nth-of-type(even) .visual-block {
+  transform: translate(100%);
+}
+.hidden-block:nth-of-type(odd) {
+  height: 17%;
+  /*transition: transform 1.5s linear;*/
+  animation: visual-bg-left 2s ease-in-out 1s;
+  animation-fill-mode: both;
+}
+.hidden-block:nth-of-type(even) {
+  height: 16%;
+  /*transition: transform 1.5s linear;*/
+  animation: visual-bg-right 2s ease-in-out 1s;
+  animation-fill-mode: both;
+}
+.hidden-block:last-of-type {
+  height: 17%;
+}
+
+@keyframes visual-bg-right {
+  100% {
+    transform: translate(-100%);
+  }
+}
+@keyframes visual-bg-left {
+  100% {
+    transform: translate(100%);
+  }
+}
